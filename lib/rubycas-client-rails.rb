@@ -375,6 +375,7 @@ module RubyCAS
         
         params = controller.params.dup
         params.delete(:ticket)
+        params.merge!(:protocol => config[:service_protocol]) if config[:service_protocol]
         service_url = controller.url_for(params)
         log.debug("Guessed service url: #{service_url.inspect}")
         return service_url
